@@ -12,31 +12,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         button.isEnabled = false
 
-        editText1.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                enableButton()
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-        })
-
-        editText2.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                enableButton()
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-        })
-
+        editText1.addTextChangedListener(getTextWatcher())
+        editText2.addTextChangedListener(getTextWatcher())
 
         button.setOnClickListener{
             val newContent = editText1.text.toString() + editText2.text.toString()
@@ -55,7 +32,6 @@ class MainActivity : AppCompatActivity() {
             textView.text = editText2.tag.toString()
         }
     }
-
 
     private fun enableButton() {
         button.isEnabled = editText1.text.isNotEmpty() && editText2.text.isNotEmpty()
