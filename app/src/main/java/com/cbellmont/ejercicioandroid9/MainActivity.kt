@@ -16,22 +16,20 @@ class MainActivity : AppCompatActivity() {
         editText2.addTextChangedListener(getTextWatcher())
 
         button.setOnClickListener{
-            val newContent = editText1.text.toString() + editText2.text.toString()
-            editText1.setText(newContent)
-            editText2.setText("")
-
+            editText1.text.append(editText2.text.toString())
+            editText2.text.clear()
         }
 
-        button.setOnFocusChangeListener { _, _ ->
-            textView.text = button.tag.toString()
+        button.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) textView.text = button.tag.toString()
         }
 
-        editText1.setOnFocusChangeListener { _, _ ->
-            textView.text = editText1.tag.toString()
+        editText1.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) textView.text = editText1.tag.toString()
         }
 
-        editText2.setOnFocusChangeListener { _, _ ->
-            textView.text = editText2.tag.toString()
+        editText2.setOnFocusChangeListener { _, hasFocus ->
+            if (hasFocus) textView.text = editText2.tag.toString()
         }
     }
 
