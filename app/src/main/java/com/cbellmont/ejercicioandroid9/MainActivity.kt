@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener{
             val newContent = editText1.text.toString() + editText2.text.toString()
             editText1.setText(newContent)
+            editText2.setText("")
+
         }
 
         button.setOnFocusChangeListener { _, _ ->
